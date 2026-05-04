@@ -41,8 +41,6 @@ class TrustScoreOut(BaseModel):
 class CertificateOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    verification_code: str
-    shareable_link: str
     file_path: str
     created_at: datetime
 

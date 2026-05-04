@@ -88,7 +88,11 @@ class Settings:
 
     @property
     def backend_cors_origins_list(self) -> List[str]:
-        value = os.getenv("BACKEND_CORS_ORIGINS_STR", "http://localhost:5173,http://localhost:3000")
+        value = os.getenv(
+            "BACKEND_CORS_ORIGINS_STR",
+            "http://localhost:5173,http://localhost:3000,"
+            "https://digital-content-authenticity-mvp-frontend-production.up.railway.app",
+        )
         return [item.strip() for item in value.split(",") if item.strip()]
 
     @property

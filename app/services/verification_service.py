@@ -61,7 +61,6 @@ async def run_verification(db: Session, upload: UploadedContent, include_identit
             pdf_path,
             {
                 "verification_id": verification.id,
-                "verification_code": verification_code,
                 "filename": upload.original_filename,
                 "trust_score": trust_payload["score"],
                 "trust_level": trust_payload["trust_level"],

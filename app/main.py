@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -17,6 +19,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/health")
+async def health_check():
+    return {
+        "status": "online",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
 app.include_router(system.router)
 app.include_router(auth.router, prefix=settings.api_v1_str)
 app.include_router(uploads.router, prefix=settings.api_v1_str)
